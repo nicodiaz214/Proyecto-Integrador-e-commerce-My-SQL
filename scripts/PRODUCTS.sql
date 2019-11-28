@@ -1,0 +1,20 @@
+CREATE TABLE products (
+	idPRODUCTS BIGINT UNSIGNED AUTO_INCREMENT,
+	`name` VARCHAR(100) NOT NULL,
+	prod_code BIGINT UNSIGNED NOT NULL,
+	category_id BIGINT UNSIGNED,
+	prod_image VARCHAR(255) NOT NULL,
+	prod_colour VARCHAR(20) NOT NULL,
+	prod_currency VARCHAR(5) NOT NULL,
+	price FLOAT(8,2) UNSIGNED NOT NULL,
+	prod_model VARCHAR(25),
+	prod_quality VARCHAR(10),
+	prod_status VARCHAR(10),
+	prod_stock TINYINT UNSIGNED NOT NULL,
+	desc_detail TEXT NOT NULL,
+ 	desc_general TINYTEXT NOT NULL,
+	desc_prod_title TINYTEXT NOT NULL,
+	desc_prod_model TINYTEXT NOT NULL,
+	desc_prod_quality TINYTEXT NOT NULL,
+    PRIMARY KEY (idPRODUCTS)
+);
