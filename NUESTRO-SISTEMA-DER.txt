@@ -2,15 +2,14 @@ NUESTRO SISTEMA DER
 
 USERS
 	
-	idUSERS BIGINT UNSIGNED AUTO_INCREMENT PK
+	id BIGINT UNSIGNED AUTO_INCREMENT	PK
 	user_code BIGINT UNSIGNED NOT NULL
-	fname VARCHAR(20) NOT NULL
-	lname VARCHAR(50) NOT NULL
-	email VARCHAR(50) NOT NULL (UNIQUE)
+	firstname VARCHAR(20) NOT NULL
+	lastname VARCHAR(50) NOT NULL
+	email1 VARCHAR(50) NOT NULL (UNIQUE)
 	email2 VARCHAR(50)
 	password VARCHAR(50) NOT NULL
-	user VARCHAR(50) 
-	user_type VARCHAR(10) NOT NULL
+	user VARCHAR(50)
 	gender VARCHAR(10) NOT NULL
 	address1 VARCHAR(50) NOT NULL
 	city VARCHAR(25)
@@ -18,71 +17,77 @@ USERS
 	zip VARCHAR(10)
 	avatar VARCHAR(255)
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	id_users_type BIGINT UNSIGNED NOT NULL	FK
+
+-------------------------------------------------------------------------
+
+USERS_TYPE
+
+	id BIGINT UNSIGNED AUTO_INCREMENT	PK
+	type VARCHAR(10)
 
 -------------------------------------------------------------------------
 
 PRODUCTS
 	
-	idPRODUCTS BIGINT UNSIGNED AUTO_INCREMENT PK
+	id BIGINT UNSIGNED AUTO_INCREMENT 	PK
 	name VARCHAR(100) NOT NULL
-	prod_code BIGINT UNSIGNED NOT NULL
-	category_id BIGINT UNSIGNED FK
-	prod_image VARCHAR(255) NOT NULL
-	prod_colour VARCHAR(20) NOT NULL
-	prod_currency VARCHAR(5) NOT NULL
+	code BIGINT UNSIGNED NOT NULL
+	image VARCHAR(255) NOT NULL
+	colour VARCHAR(20) NOT NULL
+	currency VARCHAR(5) NOT NULL
 	price FLOAT(8,2) UNSIGNED NOT NULL
-	prod_model VARCHAR(25) 
-	prod_quality VARCHAR(10)
-	prod_status VARCHAR(10) 
-	prod_stock TINYINT UNSIGNED NOT NULL
+	model VARCHAR(25) 
+	quality VARCHAR(10)
+	status VARCHAR(10) 
+	stock TINYINT UNSIGNED NOT NULL
 	desc_detail TEXT NOT NULL
  	desc_general TINYTEXT NOT NULL
 	desc_prod_title TINYTEXT NOT NULL
 	desc_prod_model TINYTEXT NOT NULL
 	desc_prod_quality TINYTEXT NOT NULL
-	//brand_id BIGINT UNSIGNED FK//
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	id_categories BIGINT UNSIGNED NOT NULL	FK
 
 -------------------------------------------------------------------------
 
 CATEGORIES
 
-	idCATEGORIES BIGINT UNSIGNED AUTO_INCREMENT PK
+	id BIGINT UNSIGNED AUTO_INCREMENT	PK
 	name VARCHAR(50) NOT NULL (UNIQUE)
 	image VARCHAR(255) NOT NULL
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
 -------------------------------------------------------------------------
 
 PURCHASE
 
-	idPURCHASE BIGINT UNSIGNED AUTO_INCREMENT PK
-	user_id BIGINT UNSIGNED NOT NULL FK
+	id BIGINT UNSIGNED AUTO_INCREMENT 	PK
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	id_users BIGINT UNSIGNED NOT NULL 	FK
 
--------------------------------------------------------------------------
-
-FAVORITES
-
-	idFAVORITES BIGINT UNSIGNED AUTO_INCREMENT PK
-	user_id BIGINT UNSIGNED NOT NULL FK
-	
 -------------------------------------------------------------------------
 
 PRODUCTS_PURCHASE
 
-	idPRODUCTS_PURCHASE BIGINT UNSIGNED AUTO_INCREMENT PK
-	purchase_id BIGINT UNSIGNED NOT NULL FK
-	product_id BIGINT UNSIGNED NOT NULL FK
-	//unit_price FLOAT(8,2) UNSIGNED//
+	id BIGINT UNSIGNED AUTO_INCREMENT 	PK
 	qty TINYINT UNSIGNED DEFAULT 1
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	id_purchase BIGINT UNSIGNED NOT NULL 	FK
+	id_products BIGINT UNSIGNED NOT NULL 	FK
+	
 
 -------------------------------------------------------------------------
 
-PRODUCTS_FAVORITES
+USERS_FAVORITES
 
 	
-	idPRODUCTS_FAVORITES BIGINT UNSIGNED AUTO_INCREMENT PK
-	favorites_id BIGINT UNSIGNED NOT NULL FK
-	product_id BIGINT UNSIGNED NOT NULL FK
+	id BIGINT UNSIGNED AUTO_INCREMENT 	PK
 	qty TINYINT DEFAULT 1
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	id_users BIGINT UNSIGNED NOT NULL 	FK
+	id_products BIGINT UNSIGNED NOT NULL 	FK
+	
 
 -------------------------------------------------------------------------
 
